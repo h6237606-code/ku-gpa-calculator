@@ -1,3 +1,22 @@
+Skip to content
+h6237606-code
+ku-gpa-calculator
+Repository navigation
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security and quality
+Insights
+Settings
+Deploy to GitHub Pages
+Update deploy.yml #2
+All jobs
+Run details
+Workflow file for this run
+.github/workflows/deploy.yml at a3b56e6
 name: Deploy to GitHub Pages
 
 on:
