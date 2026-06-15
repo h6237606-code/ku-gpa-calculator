@@ -8,7 +8,7 @@ on:
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
-  pages: read
+  pages: write
   id-token: write
 
 # Allow one active deployment
@@ -33,6 +33,10 @@ jobs:
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
+        with:
+          enablement: true
+
+
 
       - name: Install dependencies
         run: npm ci
