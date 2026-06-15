@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고려대학교 중어중문학과 학점 계산기 | KU Chinese Literature GPA Calculator</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+    <script type="module" crossorigin src="/assets/index-BEobOojW.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CecDOH-P.css">
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <div class="logo-area">
+          <span class="univ-tag">KOREA UNIVERSITY</span>
+          <h1>중어중문학과 학점 계산기</h1>
+        </div>
+        <div class="header-right">
+          <span class="dept-badge">中語中文學科</span>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="control-panel card">
+          <div class="card-header">
+            <h2>과목 정보 입력</h2>
+            <p class="card-subtitle">과목명, 학점, 평점, 수강 학기를 입력하세요.</p>
+          </div>
+          
+          <form id="gpa-form" onsubmit="event.preventDefault();">
+            <div class="table-header-row">
+              <div class="col-name">과목명</div>
+              <div class="col-credits">학점</div>
+              <div class="col-grade">평점</div>
+              <div class="col-semester">수강 학기</div>
+              <div class="col-action"></div>
+            </div>
+            
+            <div id="course-rows" class="course-rows-container">
+              <!-- Dynamic rows will be inserted here by JavaScript -->
+            </div>
+            
+            <div class="form-actions">
+              <button type="button" id="btn-add-row" class="btn btn-secondary">
+                <span class="icon">+</span> 과목 추가
+              </button>
+              <div class="action-group-right">
+                <button type="button" id="btn-reset" class="btn btn-text">전체 초기화</button>
+                <button type="button" id="btn-calculate" class="btn btn-primary">계산하기</button>
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <section class="dashboard-panel">
+          <div class="stats-grid">
+            <div class="stat-card card highlight">
+              <div class="stat-header">
+                <h3>평점평균 (GPA)</h3>
+              </div>
+              <div class="stat-body gpa-display-container">
+                <div class="gpa-radial-wrapper">
+                  <svg class="gpa-svg" viewBox="0 0 120 120">
+                    <circle class="bg-circle" cx="60" cy="60" r="50"></circle>
+                    <circle id="gpa-progress-circle" class="progress-circle" cx="60" cy="60" r="50" style="stroke-dashoffset: 314;"></circle>
+                  </svg>
+                  <div class="gpa-value-wrapper">
+                    <span id="gpa-val" class="gpa-big">0.00</span>
+                    <span class="gpa-max">/ 4.5</span>
+                  </div>
+                </div>
+                <div class="gpa-feedback-box">
+                  <p id="gpa-feedback-text">성적을 입력하고 계산을 진행해 주세요.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card card">
+              <div class="stat-header">
+                <h3>취득 학점 요약</h3>
+              </div>
+              <div class="stat-body credit-summary">
+                <div class="credit-metric">
+                  <span id="total-credits-val" class="metric-num">0</span>
+                  <span class="metric-label">총 취득학점</span>
+                </div>
+                <div class="credit-bar-container">
+                  <div class="credit-bar-label">졸업 이수학점 기준 (예: 130학점)</div>
+                  <div class="progress-bar-bg">
+                    <div id="credit-progress-bar" class="progress-bar-fill" style="width: 0%;"></div>
+                  </div>
+                  <div class="credit-bar-percentage" id="credit-percent-val">0% 완료</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-card card">
+            <div class="card-header">
+              <h2>학기별 평점 추이 그래프</h2>
+              <p class="card-subtitle">학기별 평점 변화 추이를 꺾은선 그래프로 분석합니다.</p>
+            </div>
+            <div class="chart-container">
+              <canvas id="trend-chart" width="600" height="300"></canvas>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>© 2026 Korea University Dept. of Chinese Language & Literature GPA Calculator. Designed for academic excellence.</p>
+      </footer>
+    </div>
+  </body>
+</html>
