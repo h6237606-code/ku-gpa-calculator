@@ -27,9 +27,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Node
-        uses: actions/configure-pages@v4
+        uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v4
 
       - name: Install dependencies
         run: npm ci
