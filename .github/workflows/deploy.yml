@@ -9,7 +9,7 @@ on:
 permissions:
   contents: read
   pages: read
-  id-token: read
+  id-token: write
 
 # Allow one active deployment
 concurrency:
